@@ -5,11 +5,71 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입</title>
+<script type="text/javascript">
+function MemberInsert() {
+	
+	mi = document.join;
+	
+	if (!mi.member_id.value) {
+		alert("아이디를 입력하세요.");
+		mi.member_id.focus();
+		return false;
+	}
+	if (!mi.member_name.value) {
+		alert("이름을 입력하세요.");
+		mi.member_name.focus();
+		return false;
+	}
+	if (!mi.member_password.value) {
+		alert("비밀번호를 입력하세요.");
+		mi.member_password.focus();
+		return false;
+	}
+	if(!mi.member_email.value){
+		alert("이메일을 입력하세요.");
+		mi.member_email.focus();
+	}
+	x = document.myForm.Member_email.value;
+	atpos = x.indexOf("@");
+	dotpos = x.lastIndexOf(".");
+	if(atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){
+		alert("E-mail 형식이 아닙니다.");
+		return false;
+	}
+	if(!mi.member_callnumber.value){
+		alert("핸드폰 번호를 입력하세요.");
+		mi.member_callnumber.focus();
+	}
+	if(!mi.member_birthday.value){
+		alert("생년월일을 입력하세요.");
+		mi.member_birthday.focus();
+	}
+	if(!mi.member_birthday.value){
+		alert("생년월일을 입력하세요.");
+		mi.member_birthday.focus();
+	}
+	chk = false;
+	for(i=0;i<mi.member_gender.length; i++){
+		if(mi.member_gerder[i].checked){
+			chk = true;
+			break;
+		}
+	}
+	if(!chk){
+		alert("성별을 선택하세요.");
+		mi.member_gender[0].focus();
+		return false;
+	}
+	if(confirm("회원가입을 하시겠습니까?")){
+		mi.submit();
+	}
+}
+</script>
 </head>
 <body>
 	<div>회원 정보 입력</div>
 	<div>
-		<form action="MemberInsert.jh" method="post">
+		<form action="MemberInsert.jh" method="post" name="myForm">
 			<div>
 				<div>아이디</div>
 				<input type="text" name="member_id" id="member_id"> 중복 체크<input type="button" onclick="location.href='MemberInsertDuplicateCheck.jh'">
