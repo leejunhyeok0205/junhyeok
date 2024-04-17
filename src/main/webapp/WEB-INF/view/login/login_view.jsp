@@ -25,9 +25,9 @@
 </script>
 </head>
 <body>
-	<form action="./MemberLogin.jh" method="post">
-		아이디<input type="text" name="id" id="id"> 비밀번호<input
-			type="text" name="password" id="password">
+	<form action="./MemberLogin.jh" method="post" id="MemberLogin()" name="join">
+		아이디<input type="text" name="id" id="id">
+		비밀번호<input type="text" name="password" id="password">
 		<button type="submit">로그인</button>
 	</form>
 </body>
