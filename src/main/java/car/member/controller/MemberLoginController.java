@@ -14,22 +14,22 @@ public class MemberLoginController implements Controller {
 
 	@Override
 	public MemberHandlerAdapter execute(HttpServletRequest request, HttpServletResponse response) {
-		String id = request.getParameter("id");
-		String password = request.getParameter("password");
+		String member_id = request.getParameter("member_id");
+		String member_password = request.getParameter("member_password");
 		
 		MemberDTO memberDTO = new MemberDTO( );
-		memberDTO.setMember_id(id);
-		memberDTO.setMember_password(password);
+		memberDTO.setMember_id(member_id);
+		memberDTO.setMember_password(member_password);
 		
 		MemberDAO memberDAO = new MemberDAO( );
 		memberDTO = memberDAO.memberLogin(memberDTO);
-		request.setAttribute("name", memberDTO.getMember_name( ));
+		request.setAttribute("member_name", memberDTO.getMember_name( ));
 		request.setAttribute("memberDTO", memberDTO);
 		if(!memberDTO.getMember_id( ).equals("") & !memberDTO.getMember_password( ).equals("")) {
 			HttpSession httpSession = request.getSession( );
-			httpSession.setAttribute("id", memberDTO.getMember_id( ));
-			httpSession.setAttribute("name", memberDTO.getMember_name( ));
-			Cookie cookie = new Cookie("id", memberDTO.getMember_id( ));
+			httpSession.setAttribute("mebmer_id", memberDTO.getMember_id( ));
+			httpSession.setAttribute("member_name", memberDTO.getMember_name( ));
+			Cookie cookie = new Cookie("member_id", memberDTO.getMember_id( ));
 			cookie.setMaxAge(60 * 60 * 24);
 			cookie.setPath("/");
 			response.addCookie(cookie);
