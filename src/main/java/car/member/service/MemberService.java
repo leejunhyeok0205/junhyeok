@@ -16,5 +16,7 @@ public interface MemberService {
 	public MemberDTO memberDelete(int member_code);
 	
 	public MemberDTO memberLogin(MemberDTO memberDTO);
+	
+	public int memberId(String member_id);
 
 }

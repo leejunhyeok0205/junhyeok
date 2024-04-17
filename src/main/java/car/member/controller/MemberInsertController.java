@@ -28,6 +28,7 @@ public class MemberInsertController implements Controller{
 		String member_car_num1 = request.getParameter("member_car_num1");
 		String member_car_num2 = request.getParameter("member_car_num2");
 		String member_car_num3 = request.getParameter("member_car_num3");
+		
 		MemberDTO memberDTO = new MemberDTO();
 		MemberDAO memberDAO = new MemberDAO();
 		memberDTO.setMember_id(member_id);

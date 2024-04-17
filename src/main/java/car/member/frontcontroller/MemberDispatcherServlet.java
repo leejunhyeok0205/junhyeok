@@ -13,6 +13,7 @@ import org.apache.commons.logging.LogFactory;
 
 import car.member.control.Controller;
 import car.member.controller.MemberDeleteController;
+import car.member.controller.MemberIdCheckController;
 import car.member.controller.MemberInsertController;
 import car.member.controller.MemberLoginController;
 import car.member.controller.MemberLogoutController;
@@ -107,7 +108,11 @@ public class MemberDispatcherServlet extends HttpServlet {
 			memberHandlerAdapter = controller.execute(request, response);
 			log.info("회원삭제 후 메인화면 이동" + memberHandlerAdapter);
 		}
-		
+		else if(pathURL.equals("/IdCheck.jh")) {
+			controller = new MemberIdCheckController();
+			memberHandlerAdapter = controller.execute(request, response);
+			log.info("회원삭제 후 메인화면 이동" + memberHandlerAdapter);
+		}
 		if(memberHandlerAdapter !=null) {
 			if(memberHandlerAdapter.isRedirect()) {
 				response.sendRedirect(memberHandlerAdapter.getPath());
